@@ -112,6 +112,8 @@ func (l *Logger) log(level Level, msg string, fields Fields) {
 		fmt.Fprintf(os.Stderr, "Error writing log: %v\n", err)
 	}
 
+	// FATAL level logs will exit the application with status code 1
+	// This is standard behavior for fatal-level logging
 	if level == FATAL {
 		os.Exit(1)
 	}
